@@ -61,3 +61,21 @@ If port 3000 is already in use on your machine, run `npx next dev -p 3100` inste
 | `NEXT_PUBLIC_SITE_URL` | No | `http://localhost:3000` | Canonical / Open Graph base URL. |
 
 No secrets are committed; `.env` is git-ignored.
+
+## Database
+
+```bash
+npm run db:up        # start Postgres in Docker (container: everyours-db)
+npm run db:migrate   # create/apply a migration while developing (prisma migrate dev)
+npm run db:deploy    # apply existing migrations (prisma migrate deploy)
+npm run db:seed      # replace demo properties (leads on demo lots are removed too)
+npm run db:reset     # drop, re-migrate, re-seed
+npm run db:down      # stop the container (data persists in the everyours-db volume)
+```
+
+Schema: `prisma/schema.prisma`
+- **Property**: slug, name, lot label, reference code, description, area/municipality/department/country, coordinates, size, total price, monthly-from, down payment, term, status (`AVAILABLE` | `RESERVED` | `SOLD`), featured, road access, terrain, utilities[], `isDemo`.
+- **PropertyImage**: url, alt, sort order, credit + credit URL, `isIllustrative`.
+- **Lead**: property, first/last name, email, phone (normalized, e.g. `+15125550142`), country (ISO code), preferred contact method, budget range, message, `consentAt`, status (default `NEW`), source (default `WEB_MVP`), and a unique `submissionKey` for idempotency.
+
+**Adding real inventory:** insert `Property` rows with `isDemo: false` and surveyed coordinates. Nothing in the UI needs to change. The map draws an approximate square outline from the lot's area; replace `src/lib/lot-geometry.ts` with surveyed polygons when you have them.
