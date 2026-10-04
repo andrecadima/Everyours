@@ -39,3 +39,14 @@ Land ownership made radically approachable: a premium, map-first technology expe
 - Lead capture stored in Postgres with consent timestamp, status `NEW`, source `WEB_MVP`.
 - Must stay usable when optional integrations (map tiles, bot protection) are unavailable.
 - All seeded listings and imagery are demonstration data and must be labeled as such.
+
+## Brand Commitments
+
+- Name: **Everyours** (wordmark may be set lowercase: `everyours`).
+- Tagline: "A piece of paradise. Forever yours."
+- Supporting lines: "Land ownership, within reach." · "Find your place." · "Make it yours." · "Something real. Something yours."
+- Primary CTA everywhere: **Make it yours**. Secondary: **I'm interested**.
+- Voice: short, human, confident, warm; never desperate or predatory.
+- Feel: premium, calm, optimistic, trustworthy, spacious, highly visual.
+- Palette sources named by the founder: warm earth, tropical vegetation, natural stone, off-white paper, deep charcoal. One modern sans-serif typeface.
+- Banned: guaranteed returns, appreciation, passive income, wealth, escaping employment, visas/residency, fake urgency, countdowns, dark patterns, cheap luxury gold, crypto aesthetics, generic corporate blue, giant gradients.
