@@ -46,3 +46,9 @@ export type PropertyDetail = PropertySummary & {
   utilities: Utility[];
   photos: PropertyPhoto[];
 };
+
+export const ROAD_ACCESS_LABEL: Record<RoadAccess, string> = {
+  PAVED: "Paved road",
+  GRAVEL: "Gravel road",
+  DIRT: "Dirt road",
+};
