@@ -64,3 +64,7 @@ export const leadFields = {
   message: z.string().trim().max(1000, { error: "Keep your message under 1,000 characters." }).optional(),
   consent: z.boolean().refine((v) => v, { error: "Please confirm we may contact you." }),
 };
+
+export const leadFormSchema = z.object(leadFields);
+export type LeadFormInput = z.input<typeof leadFormSchema>;
+export type LeadFormValues = z.output<typeof leadFormSchema>;
