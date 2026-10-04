@@ -16,3 +16,19 @@ const SANTA_CRUZ: [number, number] = [-63.18, -17.78];
 type Padding = { top: number; right: number; bottom: number; left: number };
 
 export type MapControls = { close: () => void; zoomToLot: () => void };
+
+type Props = {
+  properties: PropertySummary[];
+  selectedId: string | null;
+  highlightedId?: string | null;
+  onSelect?: (id: string | null) => void;
+  /** Space kept clear when framing markers (e.g. under a bottom carousel). */
+  padding?: Padding;
+  /** Desktop preview shown above the selected marker. */
+  renderPreview?: (property: PropertySummary, controls: MapControls) => ReactNode;
+  /** "lot" shows one property at the scale of its outline. */
+  variant?: "discovery" | "lot";
+  ariaLabel: string;
+  className?: string;
+  onUnavailable?: () => void;
+};
