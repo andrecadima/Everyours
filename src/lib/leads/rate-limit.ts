@@ -14,3 +14,17 @@ export function hashClient(ip: string) {
   // Never keep raw IPs, even in memory.
   return createHash("sha256").update(`everyours:${ip}`).digest("hex").slice(0, 32);
 }
+
+export function checkRateLimit(clientKey: string, now = Date.now()) {
+  const recent = (hits.get(clientKey) ?? []).filter((t) => now - t < WINDOW_MS);
+  if (recent.length >= MAX_PER_WINDOW) {
+    hits.set(clientKey, recent);
+    return { ok: false as const, retryAfterMs: WINDOW_MS - (now - recent[0]) };
+  }
+  recent.push(now);
+  hits.set(clientKey, recent);
+  if (hits.size > 10_000) {
+    for (const [key, times] of hits) if (times.every((t) => now - t >= WINDOW_MS)) hits.delete(key);
+  }
+  return { ok: true as const };
+}
