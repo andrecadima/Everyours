@@ -21,3 +21,9 @@ enum RoadAccess {
   GRAVEL
   DIRT
 }
+
+enum Terrain {
+  FLAT
+  GENTLE_SLOPE
+  HILLSIDE
+}
