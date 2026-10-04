@@ -55,3 +55,7 @@ enum LeadStatus {
   QUALIFIED
   CLOSED
 }
+
+enum LeadSource {
+  WEB_MVP
+}
