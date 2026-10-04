@@ -10,3 +10,5 @@ import { leadSubmissionSchema, normalizePhone, type LeadSubmission } from "@/lib
 export type SubmitLeadResult =
   | { ok: true }
   | { ok: false; error: string; fieldErrors?: Record<string, string> };
+
+const DUPLICATE_WINDOW_MS = 10 * 60 * 1000;
