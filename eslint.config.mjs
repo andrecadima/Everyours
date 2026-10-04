@@ -20,3 +20,5 @@ const eslintConfig = defineConfig([
     "test-results/**",
   ]),
 ]);
+
+export default eslintConfig;
