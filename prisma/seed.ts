@@ -22,3 +22,5 @@ import credits from "./data/image-credits.json";
 const prisma = new PrismaClient({
   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }),
 });
+
+type PhotoSlug = keyof typeof credits;
