@@ -1,0 +1,7 @@
+// Everyours data model.
+// Kept deliberately small: properties, their images, and the leads they produce.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
