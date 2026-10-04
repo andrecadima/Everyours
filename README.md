@@ -79,3 +79,17 @@ Schema: `prisma/schema.prisma`
 - **Lead**: property, first/last name, email, phone (normalized, e.g. `+15125550142`), country (ISO code), preferred contact method, budget range, message, `consentAt`, status (default `NEW`), source (default `WEB_MVP`), and a unique `submissionKey` for idempotency.
 
 **Adding real inventory:** insert `Property` rows with `isDemo: false` and surveyed coordinates. Nothing in the UI needs to change. The map draws an approximate square outline from the lot's area; replace `src/lib/lot-geometry.ts` with surveyed polygons when you have them.
+
+## Testing
+
+```bash
+npm test                     # unit: lead validation, phone normalization, filters
+npm run test:e2e:install     # once: download Playwright's Chromium
+npm run test:e2e             # end-to-end; starts `next dev` on :3210 automatically
+E2E_BASE_URL=http://localhost:3000 npm run test:e2e   # or reuse a running server
+npm run lint
+npm run typecheck
+npm run build
+```
+
+The end-to-end suite covers: discovery renders 10 lots and 10 markers with no console errors; filters update list and markers, preview counts, and reset; empty results explain themselves; marker ↔ list selection sync; the property page price/plan; a helpful **404** for unknown lots; reserved lots inviting interest; the complete lead flow (validation on each step, consent required and unchecked, double-click submission) with a direct database check that exactly one correct `NEW`/`WEB_MVP` lead was stored; and the mobile map, carousel, list toggle, and sticky CTA.
