@@ -61,3 +61,24 @@ function photo(slug: PhotoSlug, sortOrder: number) {
     isIllustrative: true,
   };
 }
+
+type SeedProperty = {
+  slug: string;
+  name: string;
+  lotLabel: string;
+  area: string;
+  municipality: string;
+  latitude: number;
+  longitude: number;
+  areaSquareMeters: number;
+  totalPriceUsd: number;
+  downPaymentUsd: number;
+  termMonths: number;
+  status?: PropertyStatus;
+  featured?: boolean;
+  roadAccess: RoadAccess;
+  terrain: Terrain;
+  utilities: Utility[];
+  description: string;
+  photos: PhotoSlug[];
+};
