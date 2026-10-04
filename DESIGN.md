@@ -147,3 +147,6 @@ The system refuses the land-classifieds grid, generic pin maps, luxury gold, cry
 
 ### Secondary
 - **Tajibo** `#c22f6c` (the pink of Santa Cruz's tajibo trees and of survey flagging tape): the selected marker flag, the selected parcel outline and corner stakes, the selection ring on list and carousel cards, the inline flag beside a chosen lot. **Tajibo deep** `#9e2154` for the flag pole and borders.
+
+### Tertiary
+- **Earth** `#8a5a3b` on **earth soft** `#efe6da`: demo-listing badges, reserved-lot notices, the development-only banner. Informational, never decorative.
