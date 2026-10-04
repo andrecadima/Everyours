@@ -38,3 +38,14 @@ Deliberately **not** built: payments, financing, credit checks, accounts, reserv
 
 - Node.js **20.9+** (developed on Node 26)
 - Docker (for the local database). Any Postgres 14+ works if you prefer your own; just set `DATABASE_URL`.
+
+## Quick start
+
+```bash
+cp .env.example .env     # defaults work as-is for local development
+npm install              # also generates the Prisma client and copies the map worker
+npm run setup            # starts Postgres (Docker), applies migrations, seeds demo data
+npm run dev              # http://localhost:3000
+```
+
+If port 3000 is already in use on your machine, run `npx next dev -p 3100` instead.
