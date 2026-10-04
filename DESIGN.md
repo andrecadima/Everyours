@@ -206,3 +206,6 @@ Desktop list entries have no card box: image, name, location and size, then mont
 
 ### Navigation
 Logo (flag mark plus lowercase wordmark), Explore, How it works, and "Find your land" off the home page. On phones, a single action stays visible.
+
+### Staked price tag (signature)
+A surface tag on a 2px stake planted on the lot's point. When selected, it unfurls into a pink flag to the right of its pole (560ms expo ease-out, clip-path reveal). At zoom ≥ 13 the lot outline is drawn to scale, and the selected lot gets a solid pink outline with four corner stakes. Crowded tags collapse to stake heads until there is room. On the property page the map flies from the surroundings down to the lot once it scrolls into view.
