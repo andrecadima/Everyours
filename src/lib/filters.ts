@@ -40,3 +40,5 @@ export function matches(p: PropertySummary, f: Filters) {
     (f.area === "any" || p.area === f.area)
   );
 }
+
+export const applyFilters = (list: PropertySummary[], f: Filters) => list.filter((p) => matches(p, f));
