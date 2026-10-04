@@ -7,3 +7,7 @@
 ## Platform
 
 web
+
+## Stack
+
+Pinned by the brief: Next.js App Router, TypeScript, Tailwind CSS, shadcn/ui where useful, PostgreSQL, Prisma, Zod, React Hook Form, MapLibre/OpenStreetMap-backed map. Local Postgres via Docker Compose.
