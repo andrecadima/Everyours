@@ -200,3 +200,6 @@ Three single-choice filters (monthly budget, lot size, area) open radio popovers
 
 ### Cards / Containers
 Desktop list entries have no card box: image, name, location and size, then monthly and total. The carousel and the map preview are the only card surfaces because they float over the map.
+
+### Inputs / Fields
+48px, surface ground, line-strong border, monte focus with a soft ring, danger border plus a specific message on error. Choices are large radio tiles. The consent checkbox is never pre-checked.
