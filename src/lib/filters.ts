@@ -27,3 +27,5 @@ export type Filters = {
 };
 
 export const DEFAULT_FILTERS: Filters = { budget: "any", size: "any", area: "any" };
+
+export const isFiltered = (f: Filters) => f.budget !== "any" || f.size !== "any" || f.area !== "any";
