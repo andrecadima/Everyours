@@ -42,3 +42,13 @@ test("normalises phone numbers", () => {
   assert.equal(normalizePhone("+591 7 123 4567", "BO"), "+59171234567");
   assert.equal(normalizePhone("0044 7700 900123", "GB"), "+447700900123");
 });
+
+test("filters combine and ignore unknown URL values", () => {
+  const lots = [
+    { monthlyPriceFromUsd: 100, areaSquareMeters: 450, area: "Cotoca" },
+    { monthlyPriceFromUsd: 275, areaSquareMeters: 1000, area: "Urubó" },
+  ] as Parameters<typeof applyFilters>[0];
+  assert.equal(applyFilters(lots, { budget: "150", size: "any", area: "any" }).length, 1);
+  assert.equal(applyFilters(lots, { budget: "any", size: "medium", area: "Urubó" }).length, 1);
+  assert.deepEqual(parseFilters({ budget: "9999", area: "Mars" }, ["Cotoca"]), { budget: "any", size: "any", area: "any" });
+});
