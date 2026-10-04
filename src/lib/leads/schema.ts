@@ -75,3 +75,15 @@ export const LEAD_STEPS = [
   { id: "contact", title: "How to reach you", fields: ["email", "phone", "country", "preferredContactMethod"] },
   { id: "plan", title: "Your plan", fields: ["monthlyBudgetRange", "message", "consent"] },
 ] as const satisfies ReadonlyArray<{ id: string; title: string; fields: ReadonlyArray<keyof LeadFormInput> }>;
+
+/** What the server action receives: the form plus routing and anti-abuse fields. */
+export const leadSubmissionSchema = leadFormSchema.extend({
+  propertySlug: z.string().regex(/^[a-z0-9-]{1,120}$/),
+  submissionKey: z.uuid(),
+  /** Honeypot: humans never see or fill this. */
+  website: z.string().max(0).optional().or(z.literal("")),
+  /** ms since the form rendered; bots submit instantly. */
+  elapsedMs: z.number().int().nonnegative(),
+  turnstileToken: z.string().max(4096).optional(),
+});
+export type LeadSubmission = z.input<typeof leadSubmissionSchema>;
