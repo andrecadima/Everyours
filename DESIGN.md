@@ -153,3 +153,8 @@ The system refuses the land-classifieds grid, generic pin maps, luxury gold, cry
 
 ### Neutral
 - **Stone-paper** `#f3f2ec` page ground; **surface** `#fbfbf8` raised surfaces, inputs, popovers; **ink** `#1b201d` text; **ink-2** `#4d5550` secondary text (6.9:1 on paper); **ink-3** `#646b66` tertiary text (4.9:1); **line** `#e2e0d8` hairlines; **line-strong** `#8b877a` input and chip borders (3.2:1, meets non-text contrast); **map land** `#ecebe3` basemap ground.
+
+### Named Rules
+**The Flag Rule.** Tajibo pink marks only the lot the visitor is looking at or has chosen. Never use it for decoration, alerts, or emphasis.
+
+**The Field Rule.** Green is applied as a field that owns a region (the plan card, the confirmation page), not sprinkled as accents.
