@@ -175,3 +175,151 @@
   outline: 2px solid var(--color-monte);
   outline-offset: -2px;
 }
+
+/* ── Markers: price tags planted on stakes; the active one becomes a flag ─ */
+.eo-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 4px 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.eo-marker:focus-visible {
+  outline: none;
+}
+.eo-marker:focus-visible .eo-marker__tag {
+  outline: 2px solid var(--color-monte);
+  outline-offset: 2px;
+}
+.eo-marker__tag {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+  height: 28px;
+  padding: 0 9px;
+  border: 1px solid rgb(27 32 29 / 0.14);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: 600 13px/26px var(--font-sans);
+  font-stretch: 112%;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  box-shadow: 0 1px 1px rgb(27 32 29 / 0.08), 0 6px 14px -6px rgb(27 32 29 / 0.4);
+  transition: transform 260ms var(--ease-out-expo), background-color 160ms, color 160ms;
+}
+.eo-marker__tag small {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-ink-3);
+}
+.eo-marker__stake {
+  position: relative;
+  width: 2px;
+  height: 11px;
+  background: var(--color-ink-2);
+  transform-origin: bottom;
+  transition: transform 260ms var(--ease-out-expo), background-color 160ms;
+}
+.eo-marker__stake::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: -2px;
+  width: 6px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgb(27 32 29 / 0.35);
+}
+.eo-marker:hover .eo-marker__tag {
+  transform: translateY(-2px);
+}
+.eo-marker[data-status="RESERVED"] .eo-marker__tag {
+  border-style: dashed;
+  border-color: var(--color-line-strong);
+  background: var(--color-paper);
+  color: var(--color-ink-3);
+  box-shadow: none;
+}
+
+/* Active: the tag flies to the right of its pole, like flagging tape. */
+.eo-marker[data-state="active"] .eo-marker__tag {
+  transform: translateX(calc(50% - 1px));
+  border-color: var(--color-tajibo-deep);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--color-tajibo);
+  color: #fff;
+  animation: eo-unfurl 560ms var(--ease-out-expo) both;
+}
+.eo-marker[data-state="active"] .eo-marker__tag small {
+  color: rgb(255 255 255 / 0.85);
+}
+.eo-marker[data-state="active"] .eo-marker__tag::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  bottom: -1px;
+  left: -3px;
+  width: 2px;
+  background: var(--color-tajibo-deep);
+}
+.eo-marker[data-state="active"] .eo-marker__stake {
+  transform: scaleY(1.3);
+  background: var(--color-tajibo-deep);
+}
+@keyframes eo-unfurl {
+  from {
+    clip-path: inset(-8px 100% -2px -6px);
+  }
+  to {
+    clip-path: inset(-8px -2px -2px -6px);
+  }
+}
+
+/* Crowded: collapse to a bare stake head until there is room; tags stay on top. */
+.eo-marker {
+  z-index: 2;
+}
+.eo-marker[data-compact="true"] {
+  z-index: 1;
+}
+.eo-marker[data-compact="true"] .eo-marker__tag {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid var(--color-surface);
+  border-radius: 50%;
+  background: var(--color-ink-2);
+  color: transparent;
+}
+.eo-marker[data-compact="true"] .eo-marker__tag small {
+  display: none;
+}
+
+/* Preview popup chrome */
+.eo-popup .maplibregl-popup-content {
+  padding: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+}
+.eo-popup .maplibregl-popup-tip {
+  display: none;
+}
+
+/* Discovery on phones/tablets: filters own the top edge, the carousel the bottom. */
+@media (max-width: 1023px) {
+  .eo-map--discovery .maplibregl-ctrl-top-right {
+    display: none;
+  }
+  .eo-map--discovery .maplibregl-ctrl-bottom-right {
+    top: 58px;
+    bottom: auto;
+  }
+}
