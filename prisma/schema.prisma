@@ -59,3 +59,39 @@ enum LeadStatus {
 enum LeadSource {
   WEB_MVP
 }
+
+model Property {
+  id                  String         @id @default(cuid())
+  slug                String         @unique
+  name                String // Development name, e.g. "Las Palmas"
+  lotLabel            String // e.g. "Lot 14"
+  referenceCode       String         @unique
+  /// Short emotional summary shown on the property page.
+  description         String
+  /// Locality people recognise (e.g. "Urubó"); may equal the municipality.
+  area                String
+  municipality        String
+  department          String         @default("Santa Cruz")
+  country             String         @default("Bolivia")
+  latitude            Float
+  longitude           Float
+  areaSquareMeters    Int
+  totalPriceUsd       Int
+  monthlyPriceFromUsd Int
+  downPaymentUsd      Int
+  termMonths          Int
+  status              PropertyStatus @default(AVAILABLE)
+  featured            Boolean        @default(false)
+  roadAccess          RoadAccess?
+  terrain             Terrain?
+  utilities           Utility[]
+  /// Demonstration listing (seed data). Real listings set this to false.
+  isDemo              Boolean        @default(false)
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+
+  images PropertyImage[]
+  leads  Lead[]
+
+  @@index([status])
+}
