@@ -180,3 +180,8 @@ Discovery is a split screen on desktop (results panel `minmax(24rem, 42%)`, map 
 ## Elevation & Depth
 
 Flat by default; depth only where something floats over the map or content.
+
+### Shadow Vocabulary
+- **lift** `0 1px 2px rgb(27 32 29 / .06), 0 8px 24px -8px rgb(27 32 29 / .18)`: chips and buttons floating on the map.
+- **float** `0 2px 4px rgb(27 32 29 / .08), 0 18px 40px -12px rgb(27 32 29 / .28)`: map preview popup, carousel cards, popovers.
+- **plan** `0 24px 48px -28px rgb(22 54 40 / .7)`: the payment-plan field.
