@@ -34,3 +34,10 @@ export const metadata: Metadata = {
     description,
   },
 };
+
+export const viewport: Viewport = {
+  themeColor: "#f3f2ec",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
