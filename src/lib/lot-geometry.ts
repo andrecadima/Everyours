@@ -13,3 +13,22 @@ export function lotOutline(lat: number, lng: number, areaSquareMeters: number): 
     [lng - dLng, lat - dLat],
   ];
 }
+
+export function lotFeatureCollection(lat: number, lng: number, areaSquareMeters: number) {
+  const corners = lotOutline(lat, lng, areaSquareMeters);
+  return {
+    outline: {
+      type: "Feature" as const,
+      properties: {},
+      geometry: { type: "Polygon" as const, coordinates: [[...corners, corners[0]]] },
+    },
+    stakes: {
+      type: "FeatureCollection" as const,
+      features: corners.map((c) => ({
+        type: "Feature" as const,
+        properties: {},
+        geometry: { type: "Point" as const, coordinates: c },
+      })),
+    },
+  };
+}
