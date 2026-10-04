@@ -139,3 +139,8 @@ The system refuses the land-classifieds grid, generic pin maps, luxury gold, cry
 - Pink means "the one you're looking at", nothing else.
 - Green fields, not green accents: the plan, the confirmation, the primary action.
 - Honest labels everywhere demo data or illustrative photos appear.
+
+## Colors
+
+### Primary
+- **Monte** `#1f4a37` (deep subtropical forest green): primary buttons, the payment-plan field, the confirmation page ground, focus rings, active filter chips, progress segments. **Monte deep** `#163628` for hover and dark text on light green. **Monte soft** `#e3eae2` for status chips and quiet notes; **monte ink** `#e9efe7` for secondary text on green.
