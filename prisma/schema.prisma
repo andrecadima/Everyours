@@ -112,3 +112,29 @@ model PropertyImage {
 
   @@index([propertyId, sortOrder])
 }
+
+model Lead {
+  id                     String        @id @default(cuid())
+  propertyId             String
+  firstName              String
+  lastName               String
+  email                  String
+  phone                  String
+  /// ISO 3166-1 alpha-2 country code.
+  country                String
+  preferredContactMethod ContactMethod
+  monthlyBudgetRange     BudgetRange?
+  message                String?
+  consentAt              DateTime
+  status                 LeadStatus    @default(NEW)
+  source                 LeadSource    @default(WEB_MVP)
+  /// Client-generated key that makes a submission idempotent (double clicks, retries).
+  submissionKey          String        @unique
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Restrict)
+
+  @@index([email, propertyId])
+  @@index([status, createdAt])
+}
