@@ -32,3 +32,17 @@ export type PropertySummary = {
   isDemo: boolean;
   photo: PropertyPhoto | null;
 };
+
+/** Everything the property page shows. */
+export type PropertyDetail = PropertySummary & {
+  referenceCode: string;
+  description: string;
+  department: string;
+  country: string;
+  downPaymentUsd: number;
+  termMonths: number;
+  roadAccess: RoadAccess | null;
+  terrain: Terrain | null;
+  utilities: Utility[];
+  photos: PropertyPhoto[];
+};
