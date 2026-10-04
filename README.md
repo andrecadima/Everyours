@@ -93,3 +93,36 @@ npm run build
 ```
 
 The end-to-end suite covers: discovery renders 10 lots and 10 markers with no console errors; filters update list and markers, preview counts, and reset; empty results explain themselves; marker ↔ list selection sync; the property page price/plan; a helpful **404** for unknown lots; reserved lots inviting interest; the complete lead flow (validation on each step, consent required and unchecked, double-click submission) with a direct database check that exactly one correct `NEW`/`WEB_MVP` lead was stored; and the mobile map, carousel, list toggle, and sticky CTA.
+
+## Architecture
+
+```
+prisma/
+  schema.prisma, migrations/, seed.ts        demo data (coordinates checked against OSM)
+  data/image-credits.json                    photo licenses (rendered on /credits)
+src/
+  app/
+    (discovery)/page.tsx, loading.tsx        "/" — server component loads listings
+    properties/[slug]/…                      property page, apply, thanks
+    how-it-works, privacy, terms, credits, admin/leads
+    opengraph-image.tsx, icon.svg, robots.ts
+  components/
+    discovery/   discovery (state + sync), filter-bar, property-entry, lot-carousel, map-preview
+    map/         property-map (MapLibre, markers, lot outlines, fallback), map-style (recolor + relief)
+    property/    gallery, payment-plan, property-facts, lot-map, property-photo (fallback)
+    lead/        lead-form (3 steps), form-controls, selected-lot, turnstile
+    site/        header, footer, logo, legal layout;  ui/button
+  lib/
+    properties.ts (server queries → plain DTOs), property-types.ts, filters.ts, format.ts,
+    lot-geometry.ts, analytics.ts, countries.ts, db.ts
+    leads/ schema.ts (shared Zod), submit-lead.ts (server action), rate-limit.ts, bot-protection.ts
+scripts/copy-maplibre-worker.mjs             serves MapLibre's web worker from /public
+tests/ e2e/ (Playwright), unit/ (node:test)
+```
+
+Key decisions:
+- **Server-first.** Listings and property pages are server components reading Prisma at request time (`connection()`), so builds don't need a database. Only the map, filters, and form ship client JavaScript; MapLibre loads on demand.
+- **One validation schema.** `src/lib/leads/schema.ts` drives each form step and is re-run in the server action. The server also normalizes input, applies a honeypot plus a minimum fill time (bots get a silent "success" and nothing is stored), optional Turnstile, a per-client rate limit (5 per 10 minutes, IP hashed in memory), idempotency by `submissionKey`, and a 10-minute same-email-same-lot duplicate guard. Errors returned to the browser never include internals, and server logs never include personal data.
+- **Analytics** (`src/lib/analytics.ts`): typed events `property_viewed`, `property_selected`, `map_marker_clicked`, `filters_changed`, `lead_form_started`, `lead_form_step_completed`, `lead_submitted`. They carry IDs and steps only, never PII. No provider is connected; call `registerAnalyticsSink()` to add one.
+- **Graceful degradation.** If the map style or WebGL fails, the map shows a retry message and phones switch to the list. Broken photos fall back to a branded placeholder. A database outage shows an on-brand error page with retry.
+- **Design system.** See `DESIGN.md` (tokens and rules) and `PRODUCT.md` (product truth).
