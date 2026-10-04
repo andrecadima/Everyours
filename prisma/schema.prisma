@@ -1,0 +1,140 @@
+// Everyours data model.
+// Kept deliberately small: properties, their images, and the leads they produce.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum PropertyStatus {
+  AVAILABLE
+  RESERVED
+  SOLD
+}
+
+enum RoadAccess {
+  PAVED
+  GRAVEL
+  DIRT
+}
+
+enum Terrain {
+  FLAT
+  GENTLE_SLOPE
+  HILLSIDE
+}
+
+enum Utility {
+  ELECTRICITY
+  WATER
+  INTERNET
+  SEWER
+}
+
+enum ContactMethod {
+  WHATSAPP
+  PHONE
+  EMAIL
+}
+
+enum BudgetRange {
+  UNDER_150
+  FROM_150_TO_250
+  FROM_250_TO_400
+  OVER_400
+  NOT_SURE
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CLOSED
+}
+
+enum LeadSource {
+  WEB_MVP
+}
+
+model Property {
+  id                  String         @id @default(cuid())
+  slug                String         @unique
+  name                String // Development name, e.g. "Las Palmas"
+  lotLabel            String // e.g. "Lot 14"
+  referenceCode       String         @unique
+  /// Short emotional summary shown on the property page.
+  description         String
+  /// Locality people recognise (e.g. "Urubó"); may equal the municipality.
+  area                String
+  municipality        String
+  department          String         @default("Santa Cruz")
+  country             String         @default("Bolivia")
+  latitude            Float
+  longitude           Float
+  areaSquareMeters    Int
+  totalPriceUsd       Int
+  monthlyPriceFromUsd Int
+  downPaymentUsd      Int
+  termMonths          Int
+  status              PropertyStatus @default(AVAILABLE)
+  featured            Boolean        @default(false)
+  roadAccess          RoadAccess?
+  terrain             Terrain?
+  utilities           Utility[]
+  /// Demonstration listing (seed data). Real listings set this to false.
+  isDemo              Boolean        @default(false)
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
+
+  images PropertyImage[]
+  leads  Lead[]
+
+  @@index([status])
+}
+
+model PropertyImage {
+  id         String   @id @default(cuid())
+  propertyId String
+  url        String
+  alt        String
+  sortOrder  Int      @default(0)
+  /// Attribution for licensed photography (required for CC BY / BY-SA).
+  credit     String?
+  creditUrl  String?
+  /// True when the photo illustrates the region rather than this exact lot.
+  isIllustrative Boolean @default(true)
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@index([propertyId, sortOrder])
+}
+
+model Lead {
+  id                     String        @id @default(cuid())
+  propertyId             String
+  firstName              String
+  lastName               String
+  email                  String
+  phone                  String
+  /// ISO 3166-1 alpha-2 country code.
+  country                String
+  preferredContactMethod ContactMethod
+  monthlyBudgetRange     BudgetRange?
+  message                String?
+  consentAt              DateTime
+  status                 LeadStatus    @default(NEW)
+  source                 LeadSource    @default(WEB_MVP)
+  /// Client-generated key that makes a submission idempotent (double clicks, retries).
+  submissionKey          String        @unique
+  createdAt              DateTime      @default(now())
+  updatedAt              DateTime      @updatedAt
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Restrict)
+
+  @@index([email, propertyId])
+  @@index([status, createdAt])
+}
