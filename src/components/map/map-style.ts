@@ -80,3 +80,11 @@ export function everyoursStyle(base: StyleSpecification): StyleSpecification {
     layers,
   };
 }
+
+export async function loadMapStyle(signal: AbortSignal): Promise<StyleSpecification | string> {
+  const custom = process.env.NEXT_PUBLIC_MAP_STYLE_URL;
+  if (custom) return custom;
+  const res = await fetch(DEFAULT_STYLE_URL, { signal });
+  if (!res.ok) throw new Error(`Map style request failed (${res.status})`);
+  return everyoursStyle((await res.json()) as StyleSpecification);
+}
