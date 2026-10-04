@@ -172,3 +172,7 @@ The system refuses the land-classifieds grid, generic pin maps, luxury gold, cry
 
 ### Named Rules
 **The Number Rule.** Every price and area uses tabular figures; monthly and total always appear together.
+
+## Layout
+
+Discovery is a split screen on desktop (results panel `minmax(24rem, 42%)`, map fills the rest, both full height under a 56px bar). Below 1024px it becomes map-first: filters float at the top, a snap carousel of lots sits at the bottom, and a "View list" toggle swaps to the full list. Content pages use a 78rem container with 16px/24px gutters; the property page is a two-column grid (content + 25rem sticky plan) that reorders on phones to intro, plan, details. Body measure stays under ~62ch. Sticky mobile CTA bars respect the safe area.
