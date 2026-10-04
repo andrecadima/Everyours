@@ -21,3 +21,10 @@ test("accepts a minimal valid lead and normalises email", () => {
 test("consent must be given explicitly", () => {
   assert.equal(leadFormSchema.safeParse({ ...valid, consent: false }).success, false);
 });
+
+test("rejects unknown countries, contact methods, and junk names", () => {
+  assert.equal(leadFormSchema.safeParse({ ...valid, country: "XX" }).success, false);
+  assert.equal(leadFormSchema.safeParse({ ...valid, preferredContactMethod: "FAX" }).success, false);
+  assert.equal(leadFormSchema.safeParse({ ...valid, firstName: "<script>" }).success, false);
+  assert.equal(leadFormSchema.safeParse({ ...valid, phone: "123" }).success, false);
+});
