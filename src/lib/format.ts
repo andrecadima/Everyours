@@ -13,3 +13,9 @@ export const formatSquareFeet = (squareMeters: number) =>
   `${plain.format(Math.round(squareMeters * 10.7639))} sq ft`;
 export const formatTerm = (months: number) =>
   months % 12 === 0 ? `${months} months (${months / 12} years)` : `${months} months`;
+
+export function formatCoordinates(lat: number, lng: number) {
+  const ns = lat < 0 ? "S" : "N";
+  const ew = lng < 0 ? "W" : "E";
+  return `${Math.abs(lat).toFixed(3)}° ${ns}, ${Math.abs(lng).toFixed(3)}° ${ew}`;
+}
