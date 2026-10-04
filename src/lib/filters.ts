@@ -55,3 +55,12 @@ export function parseFilters(params: Record<string, string | string[] | undefine
     area: area && areas.includes(area) ? area : "any",
   };
 }
+
+export function filtersToSearch(f: Filters) {
+  const params = new URLSearchParams();
+  if (f.budget !== "any") params.set("budget", f.budget);
+  if (f.size !== "any") params.set("size", f.size);
+  if (f.area !== "any") params.set("area", f.area);
+  const s = params.toString();
+  return s ? `?${s}` : "";
+}
