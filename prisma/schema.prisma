@@ -95,3 +95,20 @@ model Property {
 
   @@index([status])
 }
+
+model PropertyImage {
+  id         String   @id @default(cuid())
+  propertyId String
+  url        String
+  alt        String
+  sortOrder  Int      @default(0)
+  /// Attribution for licensed photography (required for CC BY / BY-SA).
+  credit     String?
+  creditUrl  String?
+  /// True when the photo illustrates the region rather than this exact lot.
+  isIllustrative Boolean @default(true)
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@index([propertyId, sortOrder])
+}
