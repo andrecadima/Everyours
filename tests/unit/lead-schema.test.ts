@@ -12,3 +12,8 @@ const valid = {
   preferredContactMethod: "WHATSAPP",
   consent: true,
 } as const;
+
+test("accepts a minimal valid lead and normalises email", () => {
+  const parsed = leadFormSchema.parse(valid);
+  assert.equal(parsed.email, "ana@example.com");
+});
