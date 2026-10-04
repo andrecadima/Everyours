@@ -24,3 +24,12 @@ One funnel, built end to end:
 Also included: `/how-it-works`, placeholder `/privacy` and `/terms`, `/credits`, a development-only lead viewer at `/admin/leads`, Open Graph image, and `robots.txt`.
 
 Deliberately **not** built: payments, financing, credit checks, accounts, reservations, CRM, chat, CMS, admin dashboard.
+
+## Tech stack
+
+- **Next.js 16** (App Router, Turbopack, React 19.2, Server Components and a Server Action for leads)
+- **TypeScript**, **Tailwind CSS v4** (design tokens in `src/app/globals.css`), Radix primitives (popover) in the shadcn style
+- **PostgreSQL 17** via Docker Compose, **Prisma 7** (`prisma-client` generator + `@prisma/adapter-pg`)
+- **Zod 4** + **React Hook Form** (one schema shared by client and server)
+- **MapLibre GL 6** with **OpenFreeMap** vector tiles (OpenStreetMap data, no API key), recolored to the brand, plus terrain relief from open elevation tiles
+- **Playwright** (end-to-end) and Node's built-in test runner (unit)
