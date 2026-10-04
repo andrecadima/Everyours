@@ -52,3 +52,9 @@ export const ROAD_ACCESS_LABEL: Record<RoadAccess, string> = {
   GRAVEL: "Gravel road",
   DIRT: "Dirt road",
 };
+
+export const TERRAIN_LABEL: Record<Terrain, string> = {
+  FLAT: "Flat",
+  GENTLE_SLOPE: "Gentle slope",
+  HILLSIDE: "Hillside",
+};
