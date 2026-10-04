@@ -68,3 +68,10 @@ export const leadFields = {
 export const leadFormSchema = z.object(leadFields);
 export type LeadFormInput = z.input<typeof leadFormSchema>;
 export type LeadFormValues = z.output<typeof leadFormSchema>;
+
+/** The fields each step owns, in order. */
+export const LEAD_STEPS = [
+  { id: "about", title: "About you", fields: ["firstName", "lastName"] },
+  { id: "contact", title: "How to reach you", fields: ["email", "phone", "country", "preferredContactMethod"] },
+  { id: "plan", title: "Your plan", fields: ["monthlyBudgetRange", "message", "consent"] },
+] as const satisfies ReadonlyArray<{ id: string; title: string; fields: ReadonlyArray<keyof LeadFormInput> }>;
