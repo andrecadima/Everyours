@@ -9,3 +9,8 @@ import { createHash } from "node:crypto";
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
 const hits = new Map<string, number[]>();
+
+export function hashClient(ip: string) {
+  // Never keep raw IPs, even in memory.
+  return createHash("sha256").update(`everyours:${ip}`).digest("hex").slice(0, 32);
+}
