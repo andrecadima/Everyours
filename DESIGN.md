@@ -162,3 +162,10 @@ The system refuses the land-classifieds grid, generic pin maps, luxury gold, cry
 ## Typography
 
 **Archivo** (variable, with width axis) is the only family. Normal width for reading and UI; the `plat` treatment (`font-stretch: 118%`, tabular figures) for prices, totals, lot numbers, and map tags, like the lettering on a survey plat.
+
+### Hierarchy
+- **Display** 2.5–4.75rem, 600, line-height 0.95, tracking -0.035em: property names, How it works.
+- **Heading** 1.75–2rem, 600, tracking -0.025em: "Find your place.", form step questions.
+- **Title** 1.0625–1.25rem, 600: section headings, lot names in lists.
+- **Body** 1rem / 1.55; **body small** 0.9375rem; meta 0.8125–0.875rem in ink-3.
+- **Plat price** 3.25rem on the plan; 1.25–1.375rem in lists; 13px on map tags.
