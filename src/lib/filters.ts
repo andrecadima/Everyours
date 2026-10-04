@@ -8,3 +8,10 @@ export const BUDGET_OPTIONS = [
   { value: "200", label: "Up to $200/mo", max: 200 },
   { value: "300", label: "Up to $300/mo", max: 300 },
 ] as const;
+
+export const SIZE_OPTIONS = [
+  { value: "any", label: "Any size", min: 0, max: Infinity },
+  { value: "small", label: "Under 500 m²", min: 0, max: 499 },
+  { value: "medium", label: "500 – 1,000 m²", min: 500, max: 1000 },
+  { value: "large", label: "Over 1,000 m²", min: 1001, max: Infinity },
+] as const;
