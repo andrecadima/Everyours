@@ -18,3 +18,11 @@ const toPhoto = (image: ImageRow): PropertyPhoto => ({
   creditUrl: image.creditUrl,
   isIllustrative: image.isIllustrative,
 });
+
+const imageSelect = {
+  url: true,
+  alt: true,
+  credit: true,
+  creditUrl: true,
+  isIllustrative: true,
+} as const;
