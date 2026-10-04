@@ -16,3 +16,11 @@ export const BUDGET_RANGES = [
   { value: "OVER_400", label: "$400+/mo" },
   { value: "NOT_SURE", label: "Not sure yet" },
 ] as const;
+
+const name = (label: string) =>
+  z
+    .string()
+    .trim()
+    .min(1, { error: `Enter your ${label}.` })
+    .max(80, { error: `That ${label} is too long.` })
+    .regex(/^[\p{L}\p{M}' .-]+$/u, { error: `Use letters only in your ${label}.` });
