@@ -50,3 +50,9 @@ Land ownership made radically approachable: a premium, map-first technology expe
 - Feel: premium, calm, optimistic, trustworthy, spacious, highly visual.
 - Palette sources named by the founder: warm earth, tropical vegetation, natural stone, off-white paper, deep charcoal. One modern sans-serif typeface.
 - Banned: guaranteed returns, appreciation, passive income, wealth, escaping employment, visas/residency, fake urgency, countdowns, dark patterns, cheap luxury gold, crypto aesthetics, generic corporate blue, giant gradients.
+
+## Evidence on Hand
+
+- No real listings, photography, testimonials, partners, press, or legal copy exist yet. Do not fabricate any of them.
+- Demo properties are fictional and flagged `DEMO`; photography is illustrative stock, labeled as such.
+- Privacy Policy and Terms are placeholders pending legal review.
