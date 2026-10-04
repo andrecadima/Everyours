@@ -18,3 +18,11 @@ const sizes: Record<Size, string> = {
   md: "h-11 px-5 text-[0.9375rem]",
   lg: "h-13 px-6 text-base",
 };
+
+export function buttonClass({
+  variant = "primary",
+  size = "md",
+  className,
+}: { variant?: Variant; size?: Size; className?: string } = {}) {
+  return cn(base, variants[variant], sizes[size], className);
+}
