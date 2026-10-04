@@ -6,3 +6,10 @@ import "server-only";
  * reCAPTCHA or another provider can be swapped in behind `verifyChallenge`.
  */
 const MIN_FILL_MS = 2500;
+
+export type BotCheckInput = {
+  honeypot?: string;
+  elapsedMs: number;
+  turnstileToken?: string;
+  clientIp?: string;
+};
