@@ -39,3 +39,10 @@ export function Field({ label, error, hint, optional, children, className }: Fie
     </div>
   );
 }
+
+export const TextInput = forwardRef<HTMLInputElement, React.ComponentProps<"input">>(function TextInput(
+  { className, ...props },
+  ref,
+) {
+  return <input ref={ref} className={cn(inputClass, className)} {...props} />;
+});
