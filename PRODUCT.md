@@ -25,3 +25,9 @@ Everyours helps people discover land in Santa Cruz, Bolivia that can be acquired
 ## Positioning
 
 Land ownership made radically approachable: a premium, map-first technology experience instead of a land-classifieds site, with the monthly amount and the full total price shown together, upfront.
+
+## Operating Context
+
+- Visitors browse an interactive map of the Santa Cruz region, select a lot, read its page, and submit a short 3-step interest form.
+- The Everyours team follows up manually; an inquiry is never a reservation or a purchase.
+- No payments, lending, underwriting, accounts, or reservations exist in the product.
