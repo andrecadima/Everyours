@@ -197,3 +197,6 @@ Primary is monte with paper text (44px; 52px large); secondary is surface with a
 
 ### Chips (filters)
 Three single-choice filters (monthly budget, lot size, area) open radio popovers that preview how many lots each option leaves; options that would leave zero are disabled. Active chips turn monte. "Reset filters" appears only when something is filtered.
+
+### Cards / Containers
+Desktop list entries have no card box: image, name, location and size, then monthly and total. The carousel and the map preview are the only card surfaces because they float over the map.
