@@ -149,3 +149,29 @@
     display: none;
   }
 }
+
+/* ── MapLibre surfaces, themed from the palette ─────────────────────────── */
+.maplibregl-map {
+  font-family: var(--font-sans);
+}
+.maplibregl-ctrl-group {
+  border-radius: var(--radius-sm) !important;
+  box-shadow: var(--shadow-lift) !important;
+  overflow: hidden;
+}
+.maplibregl-ctrl-group button {
+  width: 36px !important;
+  height: 36px !important;
+}
+.maplibregl-ctrl-attrib {
+  font-size: 11px;
+  background: rgb(251 251 248 / 0.85) !important;
+  color: var(--color-ink-2);
+}
+.maplibregl-ctrl-attrib a {
+  color: var(--color-ink-2) !important;
+}
+.maplibregl-canvas:focus-visible {
+  outline: 2px solid var(--color-monte);
+  outline-offset: -2px;
+}
