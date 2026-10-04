@@ -46,3 +46,8 @@ next-env.d.ts
 # generated
 /src/generated/
 /public/vendor/
+
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
