@@ -53,3 +53,43 @@ export async function listProperties(): Promise<PropertySummary[]> {
     photo: row.images[0] ? toPhoto(row.images[0]) : null,
   }));
 }
+
+/** Cached per request so metadata and the page share one query. */
+export const getPropertyBySlug = cache(async (slug: string): Promise<PropertyDetail | null> => {
+  if (!/^[a-z0-9-]{1,120}$/.test(slug)) return null;
+
+  const row = await db.property.findUnique({
+    where: { slug },
+    include: { images: { orderBy: { sortOrder: "asc" }, select: imageSelect } },
+  });
+  if (!row) return null;
+
+  const photos = row.images.map(toPhoto);
+  return {
+    id: row.id,
+    slug: row.slug,
+    name: row.name,
+    lotLabel: row.lotLabel,
+    area: row.area,
+    municipality: row.municipality,
+    department: row.department,
+    country: row.country,
+    latitude: row.latitude,
+    longitude: row.longitude,
+    areaSquareMeters: row.areaSquareMeters,
+    totalPriceUsd: row.totalPriceUsd,
+    monthlyPriceFromUsd: row.monthlyPriceFromUsd,
+    downPaymentUsd: row.downPaymentUsd,
+    termMonths: row.termMonths,
+    status: row.status,
+    featured: row.featured,
+    isDemo: row.isDemo,
+    referenceCode: row.referenceCode,
+    description: row.description,
+    roadAccess: row.roadAccess,
+    terrain: row.terrain,
+    utilities: row.utilities,
+    photo: photos[0] ?? null,
+    photos,
+  };
+});
