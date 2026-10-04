@@ -36,3 +36,9 @@ test("submission envelope requires a uuid key and an empty honeypot", () => {
   assert.equal(leadSubmissionSchema.safeParse({ ...base, website: "spam.example" }).success, false);
   assert.equal(leadSubmissionSchema.safeParse({ ...base, propertySlug: "../etc" }).success, false);
 });
+
+test("normalises phone numbers", () => {
+  assert.equal(normalizePhone("(512) 555-0199", "US"), "+15125550199");
+  assert.equal(normalizePhone("+591 7 123 4567", "BO"), "+59171234567");
+  assert.equal(normalizePhone("0044 7700 900123", "GB"), "+447700900123");
+});
