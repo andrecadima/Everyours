@@ -13,3 +13,5 @@ export type BotCheckInput = {
   turnstileToken?: string;
   clientIp?: string;
 };
+
+export type BotVerdict = "human" | "bot" | "challenge_failed";
