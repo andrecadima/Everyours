@@ -40,3 +40,11 @@ enum ContactMethod {
   PHONE
   EMAIL
 }
+
+enum BudgetRange {
+  UNDER_150
+  FROM_150_TO_250
+  FROM_250_TO_400
+  OVER_400
+  NOT_SURE
+}
