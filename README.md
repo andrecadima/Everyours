@@ -126,3 +126,13 @@ Key decisions:
 - **Analytics** (`src/lib/analytics.ts`): typed events `property_viewed`, `property_selected`, `map_marker_clicked`, `filters_changed`, `lead_form_started`, `lead_form_step_completed`, `lead_submitted`. They carry IDs and steps only, never PII. No provider is connected; call `registerAnalyticsSink()` to add one.
 - **Graceful degradation.** If the map style or WebGL fails, the map shows a retry message and phones switch to the list. Broken photos fall back to a branded placeholder. A database outage shows an on-brand error page with retry.
 - **Design system.** See `DESIGN.md` (tokens and rules) and `PRODUCT.md` (product truth).
+
+## Known MVP limitations
+
+- Listings, prices, plans, coordinates, and lot outlines are **fictional**; outlines are squares of the lot's area, not surveys.
+- Privacy Policy and Terms are **placeholders** pending legal review.
+- The rate limiter is in-memory (per server instance). For serverless or multiple instances, back it with Redis (e.g. Upstash via the Vercel Marketplace) behind the same function.
+- `/admin/leads` is development-only, with no authentication.
+- No email or CRM notification on new leads yet: the team reads them from the database or the dev viewer.
+- Map tiles (OpenFreeMap) and terrain (AWS Open Data) are free public services without an SLA. For production traffic, consider a commercial style URL via `NEXT_PUBLIC_MAP_STYLE_URL`.
+- English only.
