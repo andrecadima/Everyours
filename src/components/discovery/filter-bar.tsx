@@ -94,3 +94,64 @@ function FilterMenu({
     </Popover.Root>
   );
 }
+
+export function FilterBar({
+  all,
+  areas,
+  filters,
+  onChange,
+  floating,
+  className,
+}: {
+  all: PropertySummary[];
+  areas: string[];
+  filters: Filters;
+  onChange: (next: Filters) => void;
+  floating?: boolean;
+  className?: string;
+}) {
+  // Each option previews how many lots it would leave, given the other filters.
+  const countWith = (patch: Partial<Filters>) => applyFilters(all, { ...filters, ...patch }).length;
+  const areaOptions: Option[] = [{ value: "any", label: "Anywhere" }, ...areas.map((a) => ({ value: a, label: a }))];
+
+  return (
+    <div className={cn("flex items-center gap-2", className)}>
+      <FilterMenu
+        label="Monthly budget"
+        options={[...BUDGET_OPTIONS]}
+        value={filters.budget}
+        onChange={(v) => onChange({ ...filters, budget: v as Filters["budget"] })}
+        countFor={(v) => countWith({ budget: v as Filters["budget"] })}
+        floating={floating}
+      />
+      <FilterMenu
+        label="Lot size"
+        options={[...SIZE_OPTIONS]}
+        value={filters.size}
+        onChange={(v) => onChange({ ...filters, size: v as Filters["size"] })}
+        countFor={(v) => countWith({ size: v as Filters["size"] })}
+        floating={floating}
+      />
+      <FilterMenu
+        label="Area"
+        options={areaOptions}
+        value={filters.area}
+        onChange={(v) => onChange({ ...filters, area: v })}
+        countFor={(v) => countWith({ area: v })}
+        floating={floating}
+      />
+      {isFiltered(filters) && (
+        <button
+          type="button"
+          onClick={() => onChange({ budget: "any", size: "any", area: "any" })}
+          className={cn(
+            "h-9 shrink-0 rounded-sm px-2.5 text-sm font-medium text-ink-2 underline decoration-line-strong underline-offset-4 hover:text-ink",
+            floating && "bg-surface/90 no-underline shadow-lift",
+          )}
+        >
+          Reset filters
+        </button>
+      )}
+    </div>
+  );
+}
