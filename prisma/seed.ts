@@ -49,3 +49,15 @@ const PHOTO_ALT: Record<PhotoSlug, string> = {
   "amboro-vista": "Wide view over rolling hills and forest in Amboró",
   "tajibo-tree": "A pink tajibo tree in full bloom in an open field",
 };
+
+function photo(slug: PhotoSlug, sortOrder: number) {
+  const c = credits[slug];
+  return {
+    url: `/images/demo/${slug}.jpg`,
+    alt: PHOTO_ALT[slug],
+    sortOrder,
+    credit: `${c.artist}, ${c.license}, via Wikimedia Commons`,
+    creditUrl: c.source,
+    isIllustrative: true,
+  };
+}
