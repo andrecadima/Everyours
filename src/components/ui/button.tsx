@@ -26,3 +26,12 @@ export function buttonClass({
 }: { variant?: Variant; size?: Size; className?: string } = {}) {
   return cn(base, variants[variant], sizes[size], className);
 }
+
+export function Button({
+  variant,
+  size,
+  className,
+  ...props
+}: React.ComponentProps<"button"> & { variant?: Variant; size?: Size }) {
+  return <button className={buttonClass({ variant, size, className })} {...props} />;
+}
