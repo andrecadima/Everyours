@@ -17,3 +17,7 @@ test("accepts a minimal valid lead and normalises email", () => {
   const parsed = leadFormSchema.parse(valid);
   assert.equal(parsed.email, "ana@example.com");
 });
+
+test("consent must be given explicitly", () => {
+  assert.equal(leadFormSchema.safeParse({ ...valid, consent: false }).success, false);
+});
