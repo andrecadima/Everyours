@@ -9,3 +9,9 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum PropertyStatus {
+  AVAILABLE
+  RESERVED
+  SOLD
+}
