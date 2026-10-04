@@ -24,3 +24,28 @@ const prisma = new PrismaClient({
 });
 
 type PhotoSlug = keyof typeof credits;
+
+const PHOTO_ALT: Record<PhotoSlug, string> = {
+  "piray-aerial": "Aerial view of the Piraí river winding through green forest between Santa Cruz and Porongo",
+  "piray-tree": "A broad shade tree on the bank of the Piraí river under a pale sky",
+  "volcan-meadow": "Bright green meadow below forested cliffs in the Amboró foothills",
+  "volcan-valley": "A wide green valley framed by forested ridges in the Amboró foothills",
+  "volcan-lake": "A calm lagoon surrounded by green hills and flowering trees",
+  "volcan-lake-2": "Green pasture running down to a lagoon beneath rounded hills",
+  "eltorno-view": "Panoramic view over El Torno toward the first ridges of the Andes",
+  "acuri-palm": "A motacú palm standing alone in open grassland",
+  "motacu-grove": "A grove of tall motacú palms in open subtropical woodland",
+  "motacu-palm": "A large motacú palm with arching fronds in a grassy clearing",
+  "turubo-aerial": "Aerial view of flat Chiquitano woodland stretching to the horizon",
+  "riogrande-hills": "Low green hills above the Río Grande valley",
+  "surutu-sunset": "Sunset reflected on the Surutú river with silhouetted forest",
+  "volcanes-ridge": "Sandstone ridges and green forest in the Serranía de los Volcanes",
+  "lomas-landscape": "Open landscape of sand hills and green scrub at Lomas de Arena",
+  "lomas-lagoon": "A sandy shore and lagoon at Lomas de Arena on a clear day",
+  "samaipata-valley": "A tree framing a view across the Samaipata valley",
+  "samaipata-hills": "Layered green mountains seen from the hills of Samaipata",
+  "amboro-tajibo": "Forested slopes in Amboró with pink tajibo trees in bloom",
+  "amboro-hills": "Rolling forested hills in the Amboró region",
+  "amboro-vista": "Wide view over rolling hills and forest in Amboró",
+  "tajibo-tree": "A pink tajibo tree in full bloom in an open field",
+};
