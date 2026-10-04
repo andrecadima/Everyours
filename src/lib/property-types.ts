@@ -65,3 +65,9 @@ export const UTILITY_LABEL: Record<Utility, string> = {
   INTERNET: "Internet",
   SEWER: "Sewer",
 };
+
+export const STATUS_LABEL: Record<PropertyStatus, string> = {
+  AVAILABLE: "Available",
+  RESERVED: "Reserved",
+  SOLD: "Sold",
+};
