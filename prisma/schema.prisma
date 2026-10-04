@@ -48,3 +48,10 @@ enum BudgetRange {
   OVER_400
   NOT_SURE
 }
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CLOSED
+}
