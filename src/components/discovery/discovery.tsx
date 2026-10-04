@@ -24,3 +24,6 @@ function useIsDesktop() {
     () => true,
   );
 }
+
+const DESKTOP_PADDING = { top: 120, right: 96, bottom: 48, left: 72 };
+const MOBILE_PADDING = { top: 120, right: 56, bottom: 210, left: 56 };
