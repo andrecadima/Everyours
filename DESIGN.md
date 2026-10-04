@@ -169,3 +169,6 @@ The system refuses the land-classifieds grid, generic pin maps, luxury gold, cry
 - **Title** 1.0625–1.25rem, 600: section headings, lot names in lists.
 - **Body** 1rem / 1.55; **body small** 0.9375rem; meta 0.8125–0.875rem in ink-3.
 - **Plat price** 3.25rem on the plan; 1.25–1.375rem in lists; 13px on map tags.
+
+### Named Rules
+**The Number Rule.** Every price and area uses tabular figures; monthly and total always appear together.
