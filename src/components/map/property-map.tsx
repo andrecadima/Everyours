@@ -53,3 +53,8 @@ function boundsOf(list: PropertySummary[]): [[number, number], [number, number]]
   }
   return [[w, s], [e, n]];
 }
+
+function markerLabel(p: PropertySummary) {
+  const status = p.status === "RESERVED" ? " (reserved)" : "";
+  return `${p.name}, ${p.lotLabel}${status}: from $${p.monthlyPriceFromUsd} per month`;
+}
