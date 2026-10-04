@@ -33,3 +33,8 @@ Deliberately **not** built: payments, financing, credit checks, accounts, reserv
 - **Zod 4** + **React Hook Form** (one schema shared by client and server)
 - **MapLibre GL 6** with **OpenFreeMap** vector tiles (OpenStreetMap data, no API key), recolored to the brand, plus terrain relief from open elevation tiles
 - **Playwright** (end-to-end) and Node's built-in test runner (unit)
+
+## Prerequisites
+
+- Node.js **20.9+** (developed on Node 26)
+- Docker (for the local database). Any Postgres 14+ works if you prefer your own; just set `DATABASE_URL`.
