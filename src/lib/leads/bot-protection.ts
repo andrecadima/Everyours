@@ -15,3 +15,9 @@ export type BotCheckInput = {
 };
 
 export type BotVerdict = "human" | "bot" | "challenge_failed";
+
+export async function checkSubmitter(input: BotCheckInput): Promise<BotVerdict> {
+  if (input.honeypot) return "bot";
+  if (input.elapsedMs < MIN_FILL_MS) return "bot";
+  return (await verifyChallenge(input.turnstileToken, input.clientIp)) ? "human" : "challenge_failed";
+}
