@@ -18,3 +18,10 @@ export const SIZE_OPTIONS = [
 
 export type BudgetValue = (typeof BUDGET_OPTIONS)[number]["value"];
 export type SizeValue = (typeof SIZE_OPTIONS)[number]["value"];
+
+export type Filters = {
+  budget: BudgetValue;
+  size: SizeValue;
+  /** An `area` value from the listings, or "any". */
+  area: string;
+};
