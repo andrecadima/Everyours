@@ -15,3 +15,6 @@ export const SIZE_OPTIONS = [
   { value: "medium", label: "500 – 1,000 m²", min: 500, max: 1000 },
   { value: "large", label: "Over 1,000 m²", min: 1001, max: Infinity },
 ] as const;
+
+export type BudgetValue = (typeof BUDGET_OPTIONS)[number]["value"];
+export type SizeValue = (typeof SIZE_OPTIONS)[number]["value"];
