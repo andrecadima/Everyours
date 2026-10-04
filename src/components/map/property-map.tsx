@@ -58,3 +58,16 @@ function markerLabel(p: PropertySummary) {
   const status = p.status === "RESERVED" ? " (reserved)" : "";
   return `${p.name}, ${p.lotLabel}${status}: from $${p.monthlyPriceFromUsd} per month`;
 }
+
+function createMarkerElement(p: PropertySummary, lotOnly: boolean) {
+  const el = document.createElement("button");
+  el.type = "button";
+  el.className = "eo-marker";
+  el.dataset.id = p.id;
+  el.dataset.status = p.status;
+  el.setAttribute("aria-label", lotOnly ? `${p.name}, ${p.lotLabel}: corner stake` : markerLabel(p));
+  const text = lotOnly ? p.lotLabel : `$${p.monthlyPriceFromUsd}<small>/mo</small>`;
+  el.innerHTML = `<span class="eo-marker__tag" aria-hidden="true">${text}</span><span class="eo-marker__stake" aria-hidden="true"></span>`;
+  if (lotOnly) el.tabIndex = -1;
+  return el;
+}
