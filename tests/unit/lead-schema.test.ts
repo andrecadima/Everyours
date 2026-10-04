@@ -28,3 +28,11 @@ test("rejects unknown countries, contact methods, and junk names", () => {
   assert.equal(leadFormSchema.safeParse({ ...valid, firstName: "<script>" }).success, false);
   assert.equal(leadFormSchema.safeParse({ ...valid, phone: "123" }).success, false);
 });
+
+test("submission envelope requires a uuid key and an empty honeypot", () => {
+  const base = { ...valid, propertySlug: "las-palmas-lot-14", submissionKey: crypto.randomUUID(), elapsedMs: 9000 };
+  assert.equal(leadSubmissionSchema.safeParse(base).success, true);
+  assert.equal(leadSubmissionSchema.safeParse({ ...base, submissionKey: "nope" }).success, false);
+  assert.equal(leadSubmissionSchema.safeParse({ ...base, website: "spam.example" }).success, false);
+  assert.equal(leadSubmissionSchema.safeParse({ ...base, propertySlug: "../etc" }).success, false);
+});
