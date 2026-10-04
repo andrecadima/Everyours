@@ -209,3 +209,11 @@ Logo (flag mark plus lowercase wordmark), Explore, How it works, and "Find your 
 
 ### Staked price tag (signature)
 A surface tag on a 2px stake planted on the lot's point. When selected, it unfurls into a pink flag to the right of its pole (560ms expo ease-out, clip-path reveal). At zoom ≥ 13 the lot outline is drawn to scale, and the selected lot gets a solid pink outline with four corner stakes. Crowded tags collapse to stake heads until there is room. On the property page the map flies from the surroundings down to the lot once it scrolls into view.
+
+## Do's and Don'ts
+
+### Do:
+- **Do** show the total price wherever a monthly price appears.
+- **Do** label demo listings and illustrative photos, and credit photographers.
+- **Do** keep the chosen lot visible through every step of the form.
+- **Do** respect reduced motion: the flag and the fly-in become instant.
