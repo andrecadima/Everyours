@@ -32,3 +32,5 @@ type Props = {
   className?: string;
   onUnavailable?: () => void;
 };
+
+type MarkerEntry = { marker: Marker; el: HTMLButtonElement; property: PropertySummary; width: number };
