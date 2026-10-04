@@ -21,3 +21,7 @@ The internal Everyours team is a secondary user: it receives leads and contacts 
 ## Product Purpose
 
 Everyours helps people discover land in Santa Cruz, Bolivia that can be acquired through accessible monthly payment plans. The MVP has one funnel: Discover → Explore → Select → Apply → Lead captured. Success is a stored lead attached to the exact property the visitor chose, from a visitor who felt "I could actually own this."
+
+## Positioning
+
+Land ownership made radically approachable: a premium, map-first technology experience instead of a land-classifieds site, with the monthly amount and the full total price shown together, upfront.
