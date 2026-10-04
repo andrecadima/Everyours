@@ -25,3 +25,5 @@ export type Filters = {
   /** An `area` value from the listings, or "any". */
   area: string;
 };
+
+export const DEFAULT_FILTERS: Filters = { budget: "any", size: "any", area: "any" };
