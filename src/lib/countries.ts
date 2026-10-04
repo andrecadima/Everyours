@@ -5,3 +5,12 @@ export type CountryCode = (typeof COUNTRY_CODES)[number];
 
 /** Most visitors come from here; listed first. */
 export const PRIORITY_COUNTRIES: CountryCode[] = ["US", "CA", "BO", "GB", "MX", "ES"];
+
+export function countryOptions(locale = "en") {
+  const names = new Intl.DisplayNames([locale], { type: "region" });
+  const label = (code: CountryCode) => names.of(code) ?? code;
+  const rest = COUNTRY_CODES.filter((c) => !PRIORITY_COUNTRIES.includes(c))
+    .map((code) => ({ code, name: label(code) }))
+    .sort((a, b) => a.name.localeCompare(b.name, locale));
+  return { priority: PRIORITY_COUNTRIES.map((code) => ({ code, name: label(code) })), rest };
+}
