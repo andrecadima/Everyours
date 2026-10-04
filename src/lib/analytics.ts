@@ -19,3 +19,9 @@ export type AnalyticsEvent = keyof EventMap;
 type Sink = <E extends AnalyticsEvent>(event: E, props: EventMap[E]) => void;
 
 const sinks = new Set<Sink>();
+
+/** Connect a provider (PostHog, Plausible, GA, ...) at app start. */
+export function registerAnalyticsSink(sink: Sink) {
+  sinks.add(sink);
+  return () => sinks.delete(sink);
+}
