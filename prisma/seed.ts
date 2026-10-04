@@ -279,3 +279,51 @@ const properties: SeedProperty[] = [
     photos: ["turubo-aerial", "volcan-lake-2", "riogrande-hills"],
   },
 ];
+
+async function main() {
+  // Demo data is replaced wholesale; leads that point at demo lots go first.
+  const demoIds = (await prisma.property.findMany({ where: { isDemo: true }, select: { id: true } })).map((p) => p.id);
+  await prisma.lead.deleteMany({ where: { propertyId: { in: demoIds } } });
+  await prisma.property.deleteMany({ where: { isDemo: true } });
+
+  for (const [index, p] of properties.entries()) {
+    const financed = p.totalPriceUsd - p.downPaymentUsd;
+    if (financed % p.termMonths !== 0) {
+      throw new Error(`${p.slug}: plan does not divide evenly (${financed} / ${p.termMonths})`);
+    }
+    const monthly = financed / p.termMonths;
+    await prisma.property.create({
+      data: {
+        slug: p.slug,
+        name: p.name,
+        lotLabel: p.lotLabel,
+        referenceCode: `DEMO-SCZ-${String(index + 1).padStart(3, "0")}`,
+        description: p.description,
+        area: p.area,
+        municipality: p.municipality,
+        latitude: p.latitude,
+        longitude: p.longitude,
+        areaSquareMeters: p.areaSquareMeters,
+        totalPriceUsd: p.totalPriceUsd,
+        monthlyPriceFromUsd: monthly,
+        downPaymentUsd: p.downPaymentUsd,
+        termMonths: p.termMonths,
+        status: p.status ?? "AVAILABLE",
+        featured: p.featured ?? false,
+        roadAccess: p.roadAccess,
+        terrain: p.terrain,
+        utilities: p.utilities,
+        isDemo: true,
+        images: { create: p.photos.map((slug, i) => photo(slug, i)) },
+      },
+    });
+  }
+  console.log(`Seeded ${properties.length} demo properties.`);
+}
+
+main()
+  .catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  })
+  .finally(() => prisma.$disconnect());
