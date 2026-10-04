@@ -43,3 +43,13 @@ export function zoomForLot(lat: number, areaSquareMeters: number, px = 56) {
   const z = Math.log2((metersPerPixelAtZ0 * px) / Math.sqrt(areaSquareMeters));
   return Math.min(18.5, Math.max(14, z));
 }
+
+function boundsOf(list: PropertySummary[]): [[number, number], [number, number]] | null {
+  if (!list.length) return null;
+  let w = Infinity, s = Infinity, e = -Infinity, n = -Infinity;
+  for (const p of list) {
+    w = Math.min(w, p.longitude); e = Math.max(e, p.longitude);
+    s = Math.min(s, p.latitude); n = Math.max(n, p.latitude);
+  }
+  return [[w, s], [e, n]];
+}
