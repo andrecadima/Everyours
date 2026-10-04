@@ -56,3 +56,11 @@ Land ownership made radically approachable: a premium, map-first technology expe
 - No real listings, photography, testimonials, partners, press, or legal copy exist yet. Do not fabricate any of them.
 - Demo properties are fictional and flagged `DEMO`; photography is illustrative stock, labeled as such.
 - Privacy Policy and Terms are placeholders pending legal review.
+
+## Product Principles
+
+1. The map is the product: visitors reach land in the first second, not after a marketing page.
+2. Monthly and total, together: affordability is never shown without the full price.
+3. An inquiry is not a reservation; never imply guarantees about financing, availability, or outcomes.
+4. Ask for the minimum: the form collects only what the team needs to call back.
+5. Desire comes from the place and the experience, not from financial promises.
