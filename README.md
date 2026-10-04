@@ -49,3 +49,15 @@ npm run dev              # http://localhost:3000
 ```
 
 If port 3000 is already in use on your machine, run `npx next dev -p 3100` instead.
+
+## Environment variables
+
+| Variable | Required | Default | Purpose |
+| --- | --- | --- | --- |
+| `DATABASE_URL` | Yes | `postgresql://everyours:everyours@localhost:5433/everyours?schema=public` | Postgres connection (Docker maps container 5432 to host **5433**). |
+| `NEXT_PUBLIC_MAP_STYLE_URL` | No | empty (OpenFreeMap) | Any MapLibre style URL. Use only public, domain-restricted keys: `NEXT_PUBLIC_` values reach the browser. |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | No | empty | Cloudflare Turnstile. When both are set, the form shows the widget and the server verifies every submission. |
+| `ENABLE_DEV_ADMIN` | No | `false` | `/admin/leads` has no authentication; it 404s in production unless this is `true`. Add real auth before enabling it. |
+| `NEXT_PUBLIC_SITE_URL` | No | `http://localhost:3000` | Canonical / Open Graph base URL. |
+
+No secrets are committed; `.env` is git-ignored.
