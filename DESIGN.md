@@ -144,3 +144,6 @@ The system refuses the land-classifieds grid, generic pin maps, luxury gold, cry
 
 ### Primary
 - **Monte** `#1f4a37` (deep subtropical forest green): primary buttons, the payment-plan field, the confirmation page ground, focus rings, active filter chips, progress segments. **Monte deep** `#163628` for hover and dark text on light green. **Monte soft** `#e3eae2` for status chips and quiet notes; **monte ink** `#e9efe7` for secondary text on green.
+
+### Secondary
+- **Tajibo** `#c22f6c` (the pink of Santa Cruz's tajibo trees and of survey flagging tape): the selected marker flag, the selected parcel outline and corner stakes, the selection ring on list and carousel cards, the inline flag beside a chosen lot. **Tajibo deep** `#9e2154` for the flag pole and borders.
