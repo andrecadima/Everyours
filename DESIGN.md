@@ -158,3 +158,7 @@ The system refuses the land-classifieds grid, generic pin maps, luxury gold, cry
 **The Flag Rule.** Tajibo pink marks only the lot the visitor is looking at or has chosen. Never use it for decoration, alerts, or emphasis.
 
 **The Field Rule.** Green is applied as a field that owns a region (the plan card, the confirmation page), not sprinkled as accents.
+
+## Typography
+
+**Archivo** (variable, with width axis) is the only family. Normal width for reading and UI; the `plat` treatment (`font-stretch: 118%`, tabular figures) for prices, totals, lot numbers, and map tags, like the lettering on a survey plat.
