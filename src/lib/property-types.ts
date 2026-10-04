@@ -58,3 +58,10 @@ export const TERRAIN_LABEL: Record<Terrain, string> = {
   GENTLE_SLOPE: "Gentle slope",
   HILLSIDE: "Hillside",
 };
+
+export const UTILITY_LABEL: Record<Utility, string> = {
+  ELECTRICITY: "Electricity",
+  WATER: "Water",
+  INTERNET: "Internet",
+  SEWER: "Sewer",
+};
