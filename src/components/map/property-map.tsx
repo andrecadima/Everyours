@@ -34,3 +34,5 @@ type Props = {
 };
 
 type MarkerEntry = { marker: Marker; el: HTMLButtonElement; property: PropertySummary; width: number };
+
+const DEFAULT_PADDING: Padding = { top: 72, right: 72, bottom: 72, left: 72 };
