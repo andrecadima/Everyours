@@ -25,3 +25,13 @@ import type { PropertySummary } from "@/lib/property-types";
 import { cn } from "@/lib/utils";
 
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+function guessCountry(): CountryCode {
+  try {
+    const region = new Intl.Locale(navigator.language).maximize().region;
+    if (region && (COUNTRY_CODES as readonly string[]).includes(region)) return region as CountryCode;
+  } catch {
+    // Fall through to the default.
+  }
+  return "US";
+}
