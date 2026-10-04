@@ -12,3 +12,9 @@ const variants: Record<Variant, string> = {
   quiet: "text-ink hover:bg-ink/5",
   onDark: "bg-paper text-monte-deep hover:bg-white",
 };
+
+const sizes: Record<Size, string> = {
+  sm: "h-9 px-3.5 text-sm",
+  md: "h-11 px-5 text-[0.9375rem]",
+  lg: "h-13 px-6 text-base",
+};
