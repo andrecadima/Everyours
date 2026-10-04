@@ -17,3 +17,5 @@ type EventMap = {
 
 export type AnalyticsEvent = keyof EventMap;
 type Sink = <E extends AnalyticsEvent>(event: E, props: EventMap[E]) => void;
+
+const sinks = new Set<Sink>();
