@@ -194,3 +194,6 @@ Square-ish corners, like stakes and plats: 3px for badges, 6px for buttons, inpu
 
 ### Buttons
 Primary is monte with paper text (44px; 52px large); secondary is surface with a line-strong border; on green fields the primary inverts to paper with monte-deep text. Labels are verbs that name the result: "Make it yours", "Send my interest", "Keep exploring".
+
+### Chips (filters)
+Three single-choice filters (monthly budget, lot size, area) open radio popovers that preview how many lots each option leaves; options that would leave zero are disabled. Active chips turn monte. "Reset filters" appears only when something is filtered.
