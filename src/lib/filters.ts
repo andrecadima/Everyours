@@ -29,3 +29,14 @@ export type Filters = {
 export const DEFAULT_FILTERS: Filters = { budget: "any", size: "any", area: "any" };
 
 export const isFiltered = (f: Filters) => f.budget !== "any" || f.size !== "any" || f.area !== "any";
+
+export function matches(p: PropertySummary, f: Filters) {
+  const budget = BUDGET_OPTIONS.find((o) => o.value === f.budget) ?? BUDGET_OPTIONS[0];
+  const size = SIZE_OPTIONS.find((o) => o.value === f.size) ?? SIZE_OPTIONS[0];
+  return (
+    p.monthlyPriceFromUsd <= budget.max &&
+    p.areaSquareMeters >= size.min &&
+    p.areaSquareMeters <= size.max &&
+    (f.area === "any" || p.area === f.area)
+  );
+}
