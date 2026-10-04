@@ -10,3 +10,12 @@ export function LogoMark({ className }: { className?: string }) {
     </svg>
   );
 }
+
+export function Logo({ className }: { className?: string }) {
+  return (
+    <span className={cn("inline-flex items-center gap-1.5 text-monte", className)}>
+      <LogoMark className="size-[22px]" />
+      <span className="text-[1.3125rem] font-semibold tracking-[-0.03em] text-ink [font-stretch:108%]">everyours</span>
+    </span>
+  );
+}
