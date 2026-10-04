@@ -34,3 +34,5 @@ const PAINT: Record<string, Record<string, unknown>> = {
   "highway-name-minor": { "text-color": "#6b726c", "text-halo-color": "#fbfbf8" },
   "highway-name-major": { "text-color": "#6b726c", "text-halo-color": "#fbfbf8" },
 };
+
+const HIDDEN = new Set(["highway-shield-non-us", "highway-shield-us-interstate", "road_shield_us", "boundary_3"]);
