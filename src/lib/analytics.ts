@@ -14,3 +14,6 @@ type EventMap = {
   lead_form_step_completed: { propertyId: string; step: number };
   lead_submitted: { propertyId: string };
 };
+
+export type AnalyticsEvent = keyof EventMap;
+type Sink = <E extends AnalyticsEvent>(event: E, props: EventMap[E]) => void;
