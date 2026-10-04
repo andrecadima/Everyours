@@ -189,3 +189,8 @@ Flat by default; depth only where something floats over the map or content.
 ## Shapes
 
 Square-ish corners, like stakes and plats: 3px for badges, 6px for buttons, inputs, chips, images and tags, 10px for floating panels. Hairline 1px rules separate data rows. The only round shapes are radio dots and collapsed marker heads.
+
+## Components
+
+### Buttons
+Primary is monte with paper text (44px; 52px large); secondary is surface with a line-strong border; on green fields the primary inverts to paper with monte-deep text. Labels are verbs that name the result: "Make it yours", "Send my interest", "Keep exploring".
