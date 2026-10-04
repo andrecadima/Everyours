@@ -31,3 +31,11 @@ Land ownership made radically approachable: a premium, map-first technology expe
 - Visitors browse an interactive map of the Santa Cruz region, select a lot, read its page, and submit a short 3-step interest form.
 - The Everyours team follows up manually; an inquiry is never a reservation or a purchase.
 - No payments, lending, underwriting, accounts, or reservations exist in the product.
+
+## Capabilities and Constraints
+
+- Map discovery with list/map sync and three filters (monthly budget, lot size, area).
+- Property pages with gallery, total price, example payment plan, and attributes.
+- Lead capture stored in Postgres with consent timestamp, status `NEW`, source `WEB_MVP`.
+- Must stay usable when optional integrations (map tiles, bot protection) are unavailable.
+- All seeded listings and imagery are demonstration data and must be labeled as such.
