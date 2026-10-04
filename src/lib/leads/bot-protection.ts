@@ -21,3 +21,5 @@ export async function checkSubmitter(input: BotCheckInput): Promise<BotVerdict> 
   if (input.elapsedMs < MIN_FILL_MS) return "bot";
   return (await verifyChallenge(input.turnstileToken, input.clientIp)) ? "human" : "challenge_failed";
 }
+
+export const challengeEnabled = () => Boolean(process.env.TURNSTILE_SECRET_KEY);
