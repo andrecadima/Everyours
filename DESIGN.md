@@ -124,3 +124,18 @@ components:
 ---
 
 # Design System: Everyours
+
+## Overview
+
+**Creative North Star: "The staked lot"**
+
+Owning land starts with walking it and finding its corner stakes. Everyours renders every listing as a staked, measurable place on a real map: price tags planted on stakes across a recoloured topographic basemap of Santa Cruz, and the lot you are looking at flagged in tajibo pink and drawn to scale. The interface is calm stone-paper and charcoal so the place, the photography, and the numbers carry the emotion; deep "monte" green owns whole regions where commitment happens.
+
+The system refuses the land-classifieds grid, generic pin maps, luxury gold, crypto gloss, gradients, urgency, and any copy that promises returns. Affordability is never shown without the total price beside it.
+
+**Key Characteristics:**
+- Map first: land is visible in the first second, prices sit on real places.
+- One sans (Archivo); expanded widths are reserved for numbers people compare.
+- Pink means "the one you're looking at", nothing else.
+- Green fields, not green accents: the plan, the confirmation, the primary action.
+- Honest labels everywhere demo data or illustrative photos appear.
