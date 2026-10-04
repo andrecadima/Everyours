@@ -203,3 +203,6 @@ Desktop list entries have no card box: image, name, location and size, then mont
 
 ### Inputs / Fields
 48px, surface ground, line-strong border, monte focus with a soft ring, danger border plus a specific message on error. Choices are large radio tiles. The consent checkbox is never pre-checked.
+
+### Navigation
+Logo (flag mark plus lowercase wordmark), Explore, How it works, and "Find your land" off the home page. On phones, a single action stays visible.
