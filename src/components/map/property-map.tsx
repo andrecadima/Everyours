@@ -36,3 +36,10 @@ type Props = {
 type MarkerEntry = { marker: Marker; el: HTMLButtonElement; property: PropertySummary; width: number };
 
 const DEFAULT_PADDING: Padding = { top: 72, right: 72, bottom: 72, left: 72 };
+
+/** Zoom at which a lot's side is drawn about `px` pixels wide. */
+export function zoomForLot(lat: number, areaSquareMeters: number, px = 56) {
+  const metersPerPixelAtZ0 = 156_543.03 * Math.cos((lat * Math.PI) / 180);
+  const z = Math.log2((metersPerPixelAtZ0 * px) / Math.sqrt(areaSquareMeters));
+  return Math.min(18.5, Math.max(14, z));
+}
