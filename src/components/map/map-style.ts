@@ -36,3 +36,47 @@ const PAINT: Record<string, Record<string, unknown>> = {
 };
 
 const HIDDEN = new Set(["highway-shield-non-us", "highway-shield-us-interstate", "road_shield_us", "boundary_3"]);
+
+export function everyoursStyle(base: StyleSpecification): StyleSpecification {
+  const layers = base.layers
+    .filter((layer) => !HIDDEN.has(layer.id))
+    .map((layer) => {
+      const overrides = PAINT[layer.id];
+      let paint = overrides ? { ...(layer as { paint?: object }).paint, ...overrides } : (layer as { paint?: object }).paint;
+      if (layer.type === "symbol" && layer.id.startsWith("label_")) {
+        paint = { ...paint, "text-color": "#2c332e", "text-halo-color": "rgba(243,242,236,0.92)", "text-halo-width": 1.4 };
+      }
+      return paint ? ({ ...layer, paint } as typeof layer) : layer;
+    });
+
+  // Relief sits just above land cover and below water and roads.
+  const insertAt = Math.max(0, layers.findIndex((l) => l.id === "water"));
+  layers.splice(insertAt, 0, {
+    id: "everyours-hillshade",
+    type: "hillshade",
+    source: "everyours-terrain",
+    paint: {
+      "hillshade-exaggeration": ["interpolate", ["linear"], ["zoom"], 6, 0.55, 12, 0.35],
+      "hillshade-shadow-color": "rgba(46, 61, 50, 0.55)",
+      "hillshade-highlight-color": "rgba(255, 255, 250, 0.35)",
+      "hillshade-accent-color": "rgba(60, 76, 64, 0.35)",
+    },
+  });
+
+  return {
+    ...base,
+    sources: {
+      ...base.sources,
+      "everyours-terrain": {
+        type: "raster-dem",
+        tiles: [TERRAIN_TILES],
+        encoding: "terrarium",
+        tileSize: 256,
+        maxzoom: 12,
+        attribution:
+          '<a href="https://github.com/tilezen/joerd/blob/master/docs/attribution.md" target="_blank" rel="noopener">Terrain: Mapzen</a>',
+      },
+    },
+    layers,
+  };
+}
