@@ -71,3 +71,5 @@ export const STATUS_LABEL: Record<PropertyStatus, string> = {
   RESERVED: "Reserved",
   SOLD: "Sold",
 };
+
+export const fullName = (p: Pick<PropertySummary, "name" | "lotLabel">) => `${p.name}, ${p.lotLabel}`;
