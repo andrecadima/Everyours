@@ -10,3 +10,11 @@ type ImageRow = {
   creditUrl: string | null;
   isIllustrative: boolean;
 };
+
+const toPhoto = (image: ImageRow): PropertyPhoto => ({
+  url: image.url,
+  alt: image.alt,
+  credit: image.credit,
+  creditUrl: image.creditUrl,
+  isIllustrative: image.isIllustrative,
+});
