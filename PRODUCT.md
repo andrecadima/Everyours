@@ -64,3 +64,7 @@ Land ownership made radically approachable: a premium, map-first technology expe
 3. An inquiry is not a reservation; never imply guarantees about financing, availability, or outcomes.
 4. Ask for the minimum: the form collects only what the team needs to call back.
 5. Desire comes from the place and the experience, not from financial promises.
+
+## Accessibility & Inclusion
+
+WCAG 2.2 AA as the floor: semantic HTML, keyboard navigation, visible focus, labeled inputs, sufficient contrast, useful alt text, reduced motion respected. Readability outranks aesthetics.
