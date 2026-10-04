@@ -24,3 +24,15 @@ const name = (label: string) =>
     .min(1, { error: `Enter your ${label}.` })
     .max(80, { error: `That ${label} is too long.` })
     .regex(/^[\p{L}\p{M}' .-]+$/u, { error: `Use letters only in your ${label}.` });
+
+/** Strip formatting; keep a leading + for international numbers. */
+export function normalizePhone(raw: string, country?: string) {
+  const trimmed = raw.trim();
+  const digits = trimmed.replace(/\D/g, "");
+  if (trimmed.startsWith("+")) return `+${digits}`;
+  if (trimmed.startsWith("00")) return `+${digits.slice(2)}`;
+  // A 10-digit U.S./Canada number typed without the country code.
+  if ((country === "US" || country === "CA") && digits.length === 10) return `+1${digits}`;
+  if ((country === "US" || country === "CA") && digits.length === 11 && digits.startsWith("1")) return `+${digits}`;
+  return digits;
+}
