@@ -15,3 +15,12 @@ test("mobile: map first, swipeable lots, and a list view", async ({ page }) => {
   await page.getByRole("button", { name: "Show map" }).click();
   await expect(page.getByTestId("carousel-card").first()).toBeVisible();
 });
+
+test("mobile: property page keeps the price and the action within reach", async ({ page }) => {
+  await page.goto("/properties/las-palmas-lot-14");
+  const bar = page.locator("div.fixed.bottom-0");
+  await expect(bar).toContainText("$125");
+  await bar.getByRole("link", { name: "Make it yours" }).click();
+  await expect(page).toHaveURL(/apply$/);
+  await expect(page.getByLabel("First name")).toBeVisible();
+});
