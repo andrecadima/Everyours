@@ -217,3 +217,9 @@ A surface tag on a 2px stake planted on the lot's point. When selected, it unfur
 - **Do** label demo listings and illustrative photos, and credit photographers.
 - **Do** keep the chosen lot visible through every step of the form.
 - **Do** respect reduced motion: the flag and the fly-in become instant.
+
+### Don't:
+- **Don't** use tajibo pink for anything but selection.
+- **Don't** add eyebrow labels above headings, gradients, glass, or countdowns.
+- **Don't** imply a reservation, financing approval, returns, or residency.
+- **Don't** box list entries in cards on desktop.
