@@ -25,3 +25,15 @@ export function registerAnalyticsSink(sink: Sink) {
   sinks.add(sink);
   return () => sinks.delete(sink);
 }
+
+export function track<E extends AnalyticsEvent>(event: E, props: EventMap[E]) {
+  if (typeof window === "undefined") return;
+  if (process.env.NODE_ENV === "development") console.debug("[analytics]", event, props);
+  for (const sink of sinks) {
+    try {
+      sink(event, props);
+    } catch {
+      // Analytics must never break the product.
+    }
+  }
+}
