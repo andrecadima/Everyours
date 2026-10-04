@@ -14,3 +14,5 @@ const TAJIBO = "#c22f6c";
 const SANTA_CRUZ: [number, number] = [-63.18, -17.78];
 
 type Padding = { top: number; right: number; bottom: number; left: number };
+
+export type MapControls = { close: () => void; zoomToLot: () => void };
