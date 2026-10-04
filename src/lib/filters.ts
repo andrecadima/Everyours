@@ -42,3 +42,16 @@ export function matches(p: PropertySummary, f: Filters) {
 }
 
 export const applyFilters = (list: PropertySummary[], f: Filters) => list.filter((p) => matches(p, f));
+
+/** Read filters from URL search params, ignoring anything unknown. */
+export function parseFilters(params: Record<string, string | string[] | undefined>, areas: string[]): Filters {
+  const pick = (key: string) => (typeof params[key] === "string" ? (params[key] as string) : undefined);
+  const budget = pick("budget");
+  const size = pick("size");
+  const area = pick("area");
+  return {
+    budget: BUDGET_OPTIONS.some((o) => o.value === budget) ? (budget as BudgetValue) : "any",
+    size: SIZE_OPTIONS.some((o) => o.value === size) ? (size as SizeValue) : "any",
+    area: area && areas.includes(area) ? area : "any",
+  };
+}
