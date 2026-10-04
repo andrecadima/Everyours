@@ -36,3 +36,31 @@ export function normalizePhone(raw: string, country?: string) {
   if ((country === "US" || country === "CA") && digits.length === 11 && digits.startsWith("1")) return `+${digits}`;
   return digits;
 }
+
+export const leadFields = {
+  firstName: name("first name"),
+  lastName: name("last name"),
+  email: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .max(254, { error: "That email is too long." })
+    .pipe(z.email({ error: "Enter a valid email, like name@example.com." })),
+  phone: z
+    .string()
+    .trim()
+    .min(1, { error: "Enter a phone number so we can reach you." })
+    .max(32, { error: "That phone number is too long." })
+    .refine((v) => /^[+()\d\s.-]+$/.test(v), { error: "Use digits, spaces, and an optional +." })
+    .refine((v) => {
+      const n = v.replace(/\D/g, "").length;
+      return n >= 7 && n <= 15;
+    }, { error: "Enter a full phone number, including the area code." }),
+  country: z.enum(COUNTRY_CODES, { error: "Choose your country." }),
+  preferredContactMethod: z.enum(["WHATSAPP", "PHONE", "EMAIL"], { error: "Choose how we should contact you." }),
+  monthlyBudgetRange: z
+    .enum(["UNDER_150", "FROM_150_TO_250", "FROM_250_TO_400", "OVER_400", "NOT_SURE"])
+    .optional(),
+  message: z.string().trim().max(1000, { error: "Keep your message under 1,000 characters." }).optional(),
+  consent: z.boolean().refine((v) => v, { error: "Please confirm we may contact you." }),
+};
