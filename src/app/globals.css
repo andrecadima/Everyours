@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/*
+ * Everyours design tokens.
+ * Ground is stone-paper; deep "monte" green carries actions and whole regions;
+ * tajibo pink is reserved for the lot you are looking at (selection only).
+ */
+@theme {
+  --color-paper: #f3f2ec;
+  --color-surface: #fbfbf8;
+  --color-ink: #1b201d;
+  --color-ink-2: #4d5550;
+  --color-ink-3: #646b66;
+  --color-line: #e2e0d8;
+  --color-line-strong: #8b877a;
+  --color-stone: #cfccc1;
+
+  --color-monte: #1f4a37;
+  --color-monte-deep: #163628;
+  --color-monte-soft: #e3eae2;
+  --color-monte-ink: #e9efe7;
+  --color-leaf: #5e8a5f;
+
+  --color-earth: #8a5a3b;
+  --color-earth-soft: #efe6da;
+
+  --color-tajibo: #c22f6c;
+  --color-tajibo-deep: #9e2154;
+  --color-tajibo-soft: #f7dfe9;
+
+  --color-danger: #b3261e;
+  --color-danger-soft: #fbeceb;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  --shadow-lift: 0 1px 2px rgb(27 32 29 / 0.06), 0 8px 24px -8px rgb(27 32 29 / 0.18);
+  --shadow-float: 0 2px 4px rgb(27 32 29 / 0.08), 0 18px 40px -12px rgb(27 32 29 / 0.28);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --text-display: clamp(2.5rem, 1.6rem + 3.6vw, 4.75rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.035em;
+
+  --animate-plant: plant 520ms var(--ease-out-expo) both;
+  --animate-rise: rise 360ms var(--ease-out-expo) both;
+
+  @keyframes plant {
+    from {
+      transform: translateY(6px) scaleY(0.4);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0) scaleY(1);
+      opacity: 1;
+    }
+  }
+  @keyframes rise {
+    from {
+      transform: translateY(8px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
