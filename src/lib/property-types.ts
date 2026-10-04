@@ -13,3 +13,22 @@ export type PropertyPhoto = {
   creditUrl: string | null;
   isIllustrative: boolean;
 };
+
+/** What the discovery map and list need. */
+export type PropertySummary = {
+  id: string;
+  slug: string;
+  name: string;
+  lotLabel: string;
+  area: string;
+  municipality: string;
+  latitude: number;
+  longitude: number;
+  areaSquareMeters: number;
+  totalPriceUsd: number;
+  monthlyPriceFromUsd: number;
+  status: PropertyStatus;
+  featured: boolean;
+  isDemo: boolean;
+  photo: PropertyPhoto | null;
+};
